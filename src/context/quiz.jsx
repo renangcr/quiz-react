@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
-import questions from '../data/questions';
+import questions from '../data/questions_complete';
 
-const STAGES = ["Start", "Playing", "End"];
+const STAGES = ["Start", "Category", "Playing", "End"];
 
 const reorderQuestions = (questions) => {
     return questions.sort(() => Math.random() - 0.5);
@@ -9,7 +9,7 @@ const reorderQuestions = (questions) => {
 
 const initialStage = {
     gameStage: STAGES[0],
-    questions: reorderQuestions(questions),
+    questions: questions,
     currentQuestion: 0,
     score: 0,
     answerSelected: false,
@@ -25,18 +25,17 @@ const quizReducer = (state, action) => {
             };
         case "CHANGE_QUESTION":
             const nextQuestion = state.currentQuestion + 1;
-            const endGame = !questions[nextQuestion] ? true : false;
+            const endGame = !state.questions[nextQuestion] ? true : false;
 
             return {
                 ...state,
                 currentQuestion: nextQuestion,
-                gameStage: endGame ? STAGES[2] : state.gameStage,
+                gameStage: endGame ? STAGES[3] : state.gameStage,
                 answerSelected: false
             };
         case "RESTART":
             return {
-                ...initialStage,
-                questions: reorderQuestions(questions)
+                ...initialStage
             };
         case "CHECK_ANSWER": 
             if(state.answerSelected) return state;
@@ -51,6 +50,24 @@ const quizReducer = (state, action) => {
                 ...state,
                 score: state.score + correctAnswer,
                 answerSelected: true
+            }
+        case "START_GAME": 
+            let quizQuestions = null;
+
+            state.questions.forEach((categoryItens) => {
+                if(categoryItens.category === action.payload){
+                    const questionsSelected = categoryItens.questions;
+                    
+                    const reorderOption = reorderQuestions(questionsSelected[0].options);
+                    
+                    quizQuestions = questionsSelected;
+                }
+            });
+
+            return {
+                ...state,
+                questions: reorderQuestions(quizQuestions),
+                gameStage: STAGES[2]
             }
 
         default:
