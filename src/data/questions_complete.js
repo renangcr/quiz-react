@@ -138,6 +138,46 @@ const data = [
                 ],
                 answer: "América do Sul",
             },
+            {
+                question: "Qual é o estado brasileiro mais populoso?",
+                options: ["São Paulo","Rio de Janeiro", "Minas Gerais", "Bahia"],
+                answer: "São Paulo",
+            },
+            {
+                question: "Qual é a capital do estado do Rio Grande do Sul?",
+                options: ["Pelotas", "Caxias do Sul", "Santa Maria","Porto Alegre"],
+                answer: "Porto Alegre",
+            },
+            {
+                question: "Qual é o bioma que ocupa a maior parte do território brasileiro?",
+                options: ["Cerrado","Mata Atlântica", "Amazônia", "Caatinga"],
+                answer: "Mata Atlântica",
+            },
+            {
+                question: "Qual é o dia da independência do Brasil?",
+                options: ["15 de novembro", "22 de abril","7 de setembro", "12 de outubro"],
+                answer: "7 de setembro",
+            },
+            {
+                question: "Qual é o nome do maior arquipélago do Brasil?",
+                options: ["Abrolhos", "Fernando de Noronha","Trindade e Martim Vaz", "Rocas Atoll"],
+                answer: "Fernando de Noronha",
+            },
+            {
+                question: "Qual é o nome da primeira capital do Brasil?",
+                options: ["Salvador","São Paulo", "Rio de Janeiro", "Brasília"],
+                answer: "Salvador",
+            },
+            {
+                question: "Qual é o nome da maior montanha do Brasil?",
+                options: ["Pico da Bandeira", "Pico Paraná", "Pico das Agulhas Negras","Pico da Neblina" ],
+                answer: "Pico da Neblina",
+            },
+            {
+                question: "Qual é o nome do primeiro idioma não europeu falado no Brasil?",
+                options: ["Guarani", "Tupi", "Yanomami", "Xavante"],
+                answer: "Tupi",
+            },
         ],
     },
 ];
